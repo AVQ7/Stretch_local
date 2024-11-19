@@ -3,20 +3,26 @@ import stretch_body.robot
 # here's a link to an image to help you visualize the joint:
 # https://media.licdn.com/dms/image/v2/D5612AQF_PnTPfeXk8g/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1695722959735?e=2147483647&v=beta&t=C3aPEcORJ4MYjpFe38SZiO1_VGTfXvK7IbfwN33OwJo
 r = stretch_body.robot.Robot() #create an instane of the robot object
+r = stretch_body.robot.Robot() #always create robot object
+did_startup = r.startup()
+print(f'Robot connected to hardware: {did_startup}')
 
+
+is_homed = r.is_homed()
+print(f'Robot is homed: {is_homed}')
 # prints the different joints in the arm
 print(f'Wrist joints: {r.end_of_arm.joints}') # ['wrist_yaw', 'wrist_pitch', 'wrist_roll', 'stretch_gripper']
 
 #Note: none of these actions are queried, they execute immediatly without the r.push_command() command
 # . method move_to("name of joint", radians). positive radian means clockwise 
-r.end_of_arm.move_to('wrist_yaw', 1.57) # wrist spins about z-axis
+r.end_of_arm.move_to('wrist_yaw', 0) # wrist spins about z-axis
 
-r.end_of_arm.move_to('wrist_roll', 1.57) # wrist spins about x-axis, 
+r.end_of_arm.move_to('wrist_roll', -1.57) # wrist spins about x-axis, 
 
-r.end_of_arm.move_to('wrist_pitch', 1.57) #  wrist spins about y-axis
+r.end_of_arm.move_to('wrist_pitch', 0) #  wrist spins about y-axis
 
 # the following is for the gripper attached to the arm. -100(max closed) to 100(max open)
-r.end_of_arm.move_to('stretch_gripper', 100)
+r.end_of_arm.move_to('stretch_gripper', -100)
 
 # the following is to fetch the current state of the joint 
 print(r.end_of_arm.get_joint('wrist_yaw').status['pos']) # radians

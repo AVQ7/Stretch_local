@@ -2,7 +2,7 @@ import stretch_body.robot
 
 # you could set velocity commands to any part of the robots macro-movements
 r = stretch_body.robot.Robot() #create an instance of the robot object
-r = stretch_body.robot.Robot() #always create robot object
+
 did_startup = r.startup()
 print(f'Robot connected to hardware: {did_startup}')
 

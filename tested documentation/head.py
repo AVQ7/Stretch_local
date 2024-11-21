@@ -1,7 +1,7 @@
 import stretch_body.robot
 
 r = stretch_body.robot.Robot() #always create robot object
-r = stretch_body.robot.Robot() #always create robot object
+
 did_startup = r.startup()
 print(f'Robot connected to hardware: {did_startup}')
 

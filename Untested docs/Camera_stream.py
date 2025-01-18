@@ -1,0 +1,1 @@
+# website that contains gripper camera depth and color: https://docs.hello-robot.com/0.3/getting_started/stretch_hardware_overview/#d435if-depth-camera

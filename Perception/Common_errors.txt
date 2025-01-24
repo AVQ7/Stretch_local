@@ -1,6 +1,8 @@
 Problem :trying to access multiple cameras/devices using the same pipeline.
-Error msgs: 
-solution: 
+Error msgs: RuntimeError: Couldn't resolve requests
+solution 1: 
+- make sure the camera resolution specified in code is within hardware constraints of camera ( 640 by 480 usually works well on strecth 3 cameras)
+solution 2: 
 -   check other processes using your camera by typing in the terminal: lsof | grep video
 -   terminate these processesone by one with command: kill -9 "PID number"
 -   or terminate them all using this command: lsof | grep video | awk '{print $2}' | xargs -r kill -9

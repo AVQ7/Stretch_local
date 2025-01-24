@@ -1,0 +1,12 @@
+Problem :trying to access multiple cameras/devices using the same pipeline.
+Error msgs: 
+solution: 
+-   check other processes using your camera by typing in the terminal: lsof | grep video
+-   terminate these processesone by one with command: kill -9 "PID number"
+-   or terminate them all using this command: lsof | grep video | awk '{print $2}' | xargs -r kill -9
+
+Problem: trying to access a component( arm, gripper head,..etc) of the robot that is already running another process
+solution: 
+-   free the robot with command: stretch_free_robot_process.py
+-   if that doesn't work home the robot first with command: stretch_robot_home.py
+    and then use the stretch_free_robot_process.py command. 
